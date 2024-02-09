@@ -25,4 +25,33 @@ router.post("/signup",async(req,res)=>{
     )
 })
 
+router.post("/signin",async(req,res)=>{
+    let input=req.body
+          let Emailid=req.body.Emailid
+          let data=await resumeModel.findOne({"Emailid":Emailid})
+          if(!data)
+          {
+            return res.json({
+                status:"invalid user"
+            })
+          }
+          console.log(data)
+          let dbPassword=data.password
+          let inputPassword=req.body.password
+          console.log(dbPassword)
+          console.log(inputPassword)
+          const match=await bcrypt.compare(inputPassword,dbPassword)
+          {
+            if(!match)
+            {
+                return res.json({
+                    status:"invalid password"
+                })
+            }
+          }
+          res.json({
+            status:"suscfuly login"
+          })
+})
+
 module.exports=router;
