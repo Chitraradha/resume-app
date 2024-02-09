@@ -15,6 +15,6 @@ mongoose.connect("mongodb+srv://Chitrakradha2000:radha2000@cluster0.djtheuk.mong
 
 app.use("/api/resume",resumerouter)
 
-app.listen(3012,()=>{
+app.listen(3013,()=>{
     console.log("server running");
 })
