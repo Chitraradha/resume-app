@@ -11,4 +11,8 @@ route.post("/add",async(req,res)=>{
     })
 })
 
+route.get("/viewall",async(req,res)=>{
+    let result=await postModel.find()
+    res.json(result)
+})
 module.exports=route
